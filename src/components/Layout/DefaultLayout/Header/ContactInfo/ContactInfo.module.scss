@@ -1,0 +1,279 @@
+.wrapper {
+    max-width: 450px; /* Tăng từ 400px */
+    width: 100%;
+    background-color: #f9f9f9; /* Nền nhạt hơn cho chat feel */
+    border-radius: 16px; /* Bo tròn lớn hơn */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow sâu hơn */
+    overflow: hidden;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Thêm scale animation */
+    opacity: 0;
+    transform: scale(0.95); /* Shrink khi ẩn */
+}
+
+.wrapper.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 500px; /* Lớn hơn trên desktop */
+    }
+}
+
+.headerContact {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #156953;
+    border-bottom: none; /* Loại border cho mượt */
+}
+
+.avatar {
+    position: relative;
+    margin-right: 12px;
+}
+
+.avatar img {
+    width: 60px; /* Tăng size avatar */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.online-indicator {
+    /* Dot online xanh */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #28a745;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.header-info {
+    flex: 1;
+}
+
+.header-info-h2 {
+    margin: 0;
+    font-size: 24px; /* Tăng font */
+    color: #fff;
+    font-weight: 600;
+}
+
+.header-info-p {
+    margin: 4px 0 0;
+    font-size: 12px; /* Tăng từ 10px */
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+.icon-Close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-Close:hover {
+    color: #ccc;
+    transform: rotate(90deg);
+}
+
+.chat-body {
+    min-height: 400px;
+    max-height: 400px;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-bubble {
+    max-width: 60%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.system-message {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #156953;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.chat-form {
+    display: flex;
+    padding: 12px 16px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.chat-input {
+    width: 100%;
+    padding: 20px 50px 30px 16px; /* Tăng padding */
+    border: 1px solid #ddd;
+    border-radius: 24px; /* Bo tròn hơn */
+    font-size: 15px; /* Tăng font */
+    color: #333;
+    box-sizing: border-box;
+    resize: none; /* Cho textarea */
+    overflow: hidden; /* Tự expand height nếu cần */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: #156953;
+    box-shadow: 0 0 8px rgba(21, 105, 83, 0.2);
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+}
+
+.btn-send {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #156953;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-send:hover {
+    background-color: #104134;
+    transform: scale(1.05);
+}
+
+.btn-send:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-send svg {
+    margin-right: 4px; /* Space giữa icon và text */
+}
+
+.product-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-item p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.product-item p:first-child {
+    font-weight: bold;
+    color: #156953;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.product-item button {
+    background-color: #156953;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.product-item button:hover {
+    background-color: #104134;
+}
+
+.service-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.service-item p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.service-item p:first-child {
+    font-weight: bold;
+    color: #156953;
+}
+
+.booking-icon {
+    font-size: 24px;
+    color: #156953;
+    cursor: pointer;
+    margin-top: 8px;
+    align-self: center;
+    transition: color 0.3s ease;
+}
+
+.booking-icon:hover {
+    color: #104134;
+}

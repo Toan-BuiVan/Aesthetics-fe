@@ -1,0 +1,26 @@
+.menuItem {
+    list-style: none; /* Loại bỏ dấu đầu dòng */
+    padding: 10px 15px; /* Tăng padding để thoáng hơn */
+    margin-bottom: 5px; /* Thêm khoảng cách giữa các mục */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng hover mượt mà */
+    border-radius: 4px; /* Bo góc nhẹ */
+}
+
+.menuItem:hover {
+    background-color: #e0e0e0; /* Màu nền hover tinh tế hơn */
+}
+
+.label {
+    display: flex;
+    align-items: center;
+}
+
+.radio {
+    margin-right: 10px;
+}
+
+.text {
+    font-size: 16px;
+    color: #333;
+}
