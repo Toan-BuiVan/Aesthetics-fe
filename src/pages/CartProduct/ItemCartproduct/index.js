@@ -24,7 +24,7 @@ function CartItem({ item, onQuantityChange, onDelete, onAddToInvoice }) {
     return (
         <div className={cx('cart-item')}>
             <img
-                src={`https://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
+                src={`https://buitoan.somee.com/Images/${item.productImages}`}
                 alt={item.productName}
                 className={cx('item-image')}
             />

@@ -236,7 +236,7 @@ function VoucherSection() {
                     <div key={voucher.voucherID} className={cx('voucher-card')}>
                         <div className={cx('voucher-card-header')}>
                             <img
-                                src={`https://buitoan.somee.com/FilesImages/Vouchers/${voucher.voucherImage}`}
+                                src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
                                 alt={voucher.code}
                                 className={cx('voucher-logo')}
                             />

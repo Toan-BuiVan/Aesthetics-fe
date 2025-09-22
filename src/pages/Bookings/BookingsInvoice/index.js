@@ -283,7 +283,7 @@ function BookingsInvoice({ invoiceItems, setInvoiceItems, setParentSuccessMessag
                                     />
                                     <div className={cx('voucher-content')}>
                                         <img
-                                            src={`https://buitoan.somee.com/wwwroot/Images/${voucher.voucherImage}`}
+                                            src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
                                             alt={voucher.code}
                                             className={cx('voucher-image')}
                                         />

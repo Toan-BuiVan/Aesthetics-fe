@@ -223,7 +223,7 @@ function CartProduct() {
                                 {invoiceItems.map((item, index) => (
                                     <div key={index} className={cx('invoice-item')}>
                                         <img
-                                            src={`https://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
+                                            src={`https://buitoan.somee.com/Images/${item.productImages}`}
                                             alt={item.productName}
                                             className={cx('invoice-item-image')}
                                         />
@@ -275,7 +275,7 @@ function CartProduct() {
                                             />
                                             <div className={cx('voucher-content')}>
                                                 <img
-                                                    src={`https://buitoan.somee.com/wwwroot/Images/${voucher.voucherImage}`}
+                                                    src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
                                                     alt={voucher.code}
                                                     className={cx('voucher-image')}
                                                 />

@@ -209,7 +209,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
                 </button>
                 <div className={cx('product-image')}>
                     <img
-                        src={`https://buitoan.somee.com/wwwroot/Images/${product.productImages}`}
+                        src={`https://buitoan.somee.com/Images/${product.productImages}`}
                         alt={product.productName}
                     />
                 </div>
@@ -279,7 +279,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
                         {relatedProducts.map((relatedProduct) => (
                             <div key={relatedProduct.productID} className={cx('related-product-item')}>
                                 <img
-                                    src={`https://buitoan.somee.com/wwwroot/Images/${relatedProduct.productImages}`}
+                                    src={`https://buitoan.somee.com/Images/${relatedProduct.productImages}`}
                                     alt={relatedProduct.productName}
                                     className={cx('related-product-image')}
                                 />

@@ -4,7 +4,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styles from './ItemProduct.module.scss';
 
 function ItemProduct({ product, onSuccess, onClick }) {
-    const imageBaseUrl = 'https://buitoan.somee.com/wwwroot/Images';
+    const imageBaseUrl = 'https://buitoan.somee.com/Images';
     const imageUrl = `${imageBaseUrl}/${product.productImages}`;
 
     const handleAddToCart = async (e) => {

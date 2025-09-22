@@ -299,7 +299,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
 
     const renderMessageText = (text) => {
         const parsedText = text.replace(/Hình ảnh: ([^\s,]+(?:\.(png|jpg|jpeg|gif))?)/g, (match, filename) => {
-            const imgPath = `https://buitoan.somee.com/wwwroot/Images/${filename}`;
+            const imgPath = `https://buitoan.somee.com/Images/${filename}`;
 
             return `<img src="${imgPath}" alt="Product Image" style="max-width: 50%; border-radius: 8px; margin-top: 8px;" />`;
         });
@@ -350,7 +350,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
 
                                 {msg.data.productImages && (
                                     <img
-                                        src={`https://buitoan.somee.com/wwwroot/Images/${msg.data.productImages}`}
+                                        src={`https://buitoan.somee.com/Images/${msg.data.productImages}`}
                                         alt="Product Image"
                                         style={{ maxWidth: '50%', borderRadius: '8px', marginTop: '8px' }}
                                     />
