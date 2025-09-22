@@ -58,7 +58,14 @@ function VoucherSection() {
                     return;
                 }
 
-                setVouchers(result.data || result);
+                const voucherData = result.data || result;
+                if (Array.isArray(voucherData)) {
+                    setVouchers(voucherData);
+                } else {
+                    setVouchers([]);  
+                    setError('Dữ liệu voucher không hợp lệ hoặc không phải mảng.');
+                    console.warn('Dữ liệu từ API không phải array:', voucherData);  
+                }
                 setLoading(false);
 
                 const newAccessToken = response.headers.get('New-AccessToken');
@@ -109,9 +116,9 @@ function VoucherSection() {
             const result = await response.json();
 
             if (response.ok) {
-                setSuccessMessage(result.resposeMessage);
+                setSuccessMessage(result.responseMessage); 
             } else {
-                setSuccessMessage(result.resposeMessage);
+                setSuccessMessage(result.responseMessage);  
             }
 
             const newAccessToken = response.headers.get('New-AccessToken');
@@ -193,9 +200,9 @@ function VoucherSection() {
             const result = await response.json();
 
             if (response.ok) {
-                setSuccessMessage(result.resposeMessage);
+                setSuccessMessage(result.responseMessage);  
             } else {
-                setSuccessMessage(result.resposeMessage);
+                setSuccessMessage(result.responseMessage);  
             }
 
             const newAccessToken = response.headers.get('New-AccessToken');
@@ -232,89 +239,92 @@ function VoucherSection() {
                 <button>Lưu</button>
             </div>
             <div className={cx('voucher-grid')}>
-                {vouchers.map((voucher) => (
-                    <div key={voucher.voucherID} className={cx('voucher-card')}>
-                        <div className={cx('voucher-card-header')}>
-                            <img
-                                src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
-                                alt={voucher.code}
-                                className={cx('voucher-logo')}
-                            />
-                        </div>
-                        <div className={cx('voucher-details')}>
-                            <p className={cx('rank-member')}>{voucher.rankMember}</p>
-                            <div className={cx('voucher-discount')}>
-                                <span className={cx('discount-percent')}>{voucher.discountValue}%</span>
-                                <span className={cx('discount-text')}>
-                                    Giảm tối đa {voucher.maxValue.toLocaleString('vi-VN')}đ
-                                </span>
+                {Array.isArray(vouchers) && vouchers.length > 0 ? (
+                    vouchers.map((voucher) => (
+                        <div key={voucher.voucherID} className={cx('voucher-card')}>
+                            <div className={cx('voucher-card-header')}>
+                                <img
+                                    src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
+                                    alt={voucher.code}
+                                    className={cx('voucher-logo')}
+                                />
                             </div>
-                            <p>Đơn tối thiểu {voucher.minimumOrderValue.toLocaleString('vi-VN')}đ</p>
-                            <p>Hết hạn: {new Date(voucher.endDate).toLocaleDateString('vi-VN')}</p>
-                            <div className={cx('button-group')}>
-                                <button className={cx('save-button')} onClick={() => handleSaveVoucher(voucher)}>
-                                    Lưu
-                                </button>
-                                <div className={cx('exchange-container')}>
-                                    <button
-                                        className={cx('exchange-button')}
-                                        onMouseEnter={() => handleExchangeHover(voucher, true)}
-                                        onMouseLeave={() => handleExchangeHover(voucher, false)}
-                                        onClick={() => handleExchangeClick(voucher)}
-                                    >
-                                        Đổi
+                            <div className={cx('voucher-details')}>
+                                <p className={cx('rank-member')}>{voucher.rankMember}</p>
+                                <div className={cx('voucher-discount')}>
+                                    <span className={cx('discount-percent')}>{voucher.discountValue}%</span>
+                                    <span className={cx('discount-text')}>
+                                        Giảm tối đa {voucher.maxValue.toLocaleString('vi-VN')}đ
+                                    </span>
+                                </div>
+                                <p>Đơn tối thiểu {voucher.minimumOrderValue.toLocaleString('vi-VN')}đ</p>
+                                <p>Hết hạn: {new Date(voucher.endDate).toLocaleDateString('vi-VN')}</p>
+                                <div className={cx('button-group')}>
+                                    <button className={cx('save-button')} onClick={() => handleSaveVoucher(voucher)}>
+                                        Lưu
                                     </button>
-                                    {showExchangeOptions[voucher.voucherID] && (
-                                        <div
-                                            className={cx('exchange-options')}
-                                            onMouseEnter={() => {
-                                                if (timeoutRefs.current[voucher.voucherID]) {
-                                                    clearTimeout(timeoutRefs.current[voucher.voucherID]);
-                                                    delete timeoutRefs.current[voucher.voucherID];
-                                                }
-                                            }}
-                                            onMouseLeave={() => {
-                                                timeoutRefs.current[voucher.voucherID] = setTimeout(() => {
-                                                    setShowExchangeOptions((prev) => ({
-                                                        ...prev,
-                                                        [voucher.voucherID]: false,
-                                                    }));
-                                                    delete timeoutRefs.current[voucher.voucherID];
-                                                }, 200);
-                                            }}
+                                    <div className={cx('exchange-container')}>
+                                        <button
+                                            className={cx('exchange-button')}
+                                            onMouseEnter={() => handleExchangeHover(voucher, true)}
+                                            onMouseLeave={() => handleExchangeHover(voucher, false)}
+                                            onClick={() => handleExchangeClick(voucher)}
                                         >
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    value="Accumulated"
-                                                    checked={selectedOptions[voucher.voucherID] === 'Accumulated'}
-                                                    onChange={(e) =>
-                                                        handleOptionChange(voucher.voucherID, e.target.value)
+                                            Đổi
+                                        </button>
+                                        {showExchangeOptions[voucher.voucherID] && (
+                                            <div
+                                                className={cx('exchange-options')}
+                                                onMouseEnter={() => {
+                                                    if (timeoutRefs.current[voucher.voucherID]) {
+                                                        clearTimeout(timeoutRefs.current[voucher.voucherID]);
+                                                        delete timeoutRefs.current[voucher.voucherID];
                                                     }
-                                                />
-                                                Accumulated
-                                            </label>
-                                            <label>
-                                                <input
-                                                    type="radio"
-                                                    value="Rating"
-                                                    checked={selectedOptions[voucher.voucherID] === 'Rating'}
-                                                    onChange={(e) =>
-                                                        handleOptionChange(voucher.voucherID, e.target.value)
-                                                    }
-                                                />
-                                                Rating
-                                            </label>
-                                        </div>
-                                    )}
+                                                }}
+                                                onMouseLeave={() => {
+                                                    timeoutRefs.current[voucher.voucherID] = setTimeout(() => {
+                                                        setShowExchangeOptions((prev) => ({
+                                                            ...prev,
+                                                            [voucher.voucherID]: false,
+                                                        }));
+                                                        delete timeoutRefs.current[voucher.voucherID];
+                                                    }, 200);
+                                                }}
+                                            >
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        value="Accumulated"
+                                                        checked={selectedOptions[voucher.voucherID] === 'Accumulated'}
+                                                        onChange={(e) =>
+                                                            handleOptionChange(voucher.voucherID, e.target.value)
+                                                        }
+                                                    />
+                                                    Accumulated
+                                                </label>
+                                                <label>
+                                                    <input
+                                                        type="radio"
+                                                        value="Rating"
+                                                        checked={selectedOptions[voucher.voucherID] === 'Rating'}
+                                                        onChange={(e) =>
+                                                            handleOptionChange(voucher.voucherID, e.target.value)
+                                                        }
+                                                    />
+                                                    Rating
+                                                </label>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                ) : (
+                    <p>Không có voucher nào để hiển thị.</p>  
+                )}
             </div>
         </div>
     );
 }
-
 export default VoucherSection;

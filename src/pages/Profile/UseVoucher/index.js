@@ -49,13 +49,15 @@ function UseVoucher() {
                     return;
                 }
 
-                // Kiểm tra và chuẩn hóa dữ liệu
-                const voucherData = result.data;
+               
+                const voucherData = result?.data || [];  
                 if (Array.isArray(voucherData)) {
                     setVouchers(voucherData);
+                    console.log('Vouchers fetched successfully:', voucherData);  
                 } else {
                     setVouchers([]);
-                    setError('Dữ liệu voucher không hợp lệ.');
+                    setError('Dữ liệu voucher không hợp lệ hoặc không phải mảng.');
+                    console.warn('Dữ liệu từ API không phải array:', voucherData);  
                 }
                 setLoading(false);
 
@@ -67,6 +69,7 @@ function UseVoucher() {
                 setLoading(false);
                 console.error('Lỗi khi lấy voucher:', err);
                 setError('Có lỗi xảy ra khi tải voucher.');
+                setVouchers([]); 
             }
         };
 
@@ -88,7 +91,7 @@ function UseVoucher() {
             {successMessage && <SuccessMessage message={successMessage} />}
             <h2>Voucher Của Bạn</h2>
             <div className={cx('voucher-grid')}>
-                {Array.isArray(vouchers) ? (
+                {Array.isArray(vouchers) && vouchers.length > 0 ? (  
                     vouchers.map((voucher) => (
                         <div key={voucher.voucherID} className={cx('voucher-card')}>
                             <div className={cx('voucher-card-header')}>
@@ -102,14 +105,12 @@ function UseVoucher() {
                                 <div className={cx('voucher-discount')}>
                                     <span className={cx('discount-percent')}>{voucher.discountValue}%</span>
                                     <span className={cx('discount-text')}>
-                                        Giảm tối đa {voucher.maxValue ? voucher.maxValue.toLocaleString('vi-VN') : '0'}đ
+                                        Giảm tối đa {voucher.maxValue?.toLocaleString('vi-VN') || '0'}đ  {/* Optional chaining để tránh lỗi nếu undefined */}
                                     </span>
                                 </div>
                                 <p>
                                     Đơn tối thiểu{' '}
-                                    {voucher.minimumOrderValue
-                                        ? voucher.minimumOrderValue.toLocaleString('vi-VN')
-                                        : '0'}
+                                    {voucher.minimumOrderValue?.toLocaleString('vi-VN') || '0'}  {/* Optional chaining */}
                                     đ
                                 </p>
                                 <p>
