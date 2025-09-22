@@ -44,7 +44,7 @@ function VoucherSection() {
             };
 
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Vouchers/GetList_SearchVouchers', {
+                const response = await fetch('http://buitoan.somee.com/api/Vouchers/GetList_SearchVouchers', {
                     method: 'POST',
                     headers,
                     body: JSON.stringify(data),
@@ -100,7 +100,7 @@ function VoucherSection() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Wallets/Insert_Wallets', {
+            const response = await fetch('http://buitoan.somee.com/api/Wallets/Insert_Wallets', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(data),
@@ -184,7 +184,7 @@ function VoucherSection() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Wallets/RedeemPointsForVoucher', {
+            const response = await fetch('http://buitoan.somee.com/api/Wallets/RedeemPointsForVoucher', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(data),
@@ -236,7 +236,7 @@ function VoucherSection() {
                     <div key={voucher.voucherID} className={cx('voucher-card')}>
                         <div className={cx('voucher-card-header')}>
                             <img
-                                src={`https://buitoan.somee.com/FilesImages/Vouchers/${voucher.voucherImage}`}
+                                src={`http://buitoan.somee.com/FilesImages/Vouchers/${voucher.voucherImage}`}
                                 alt={voucher.code}
                                 className={cx('voucher-logo')}
                             />

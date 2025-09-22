@@ -39,7 +39,7 @@ function PaymentCanceled({ onCountChange }) {
             };
 
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoice', {
+                const response = await fetch('http://buitoan.somee.com/api/Invoice/GetList_SearchInvoice', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(requestData),
@@ -80,7 +80,7 @@ function PaymentCanceled({ onCountChange }) {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
+            const response = await fetch('http://buitoan.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),

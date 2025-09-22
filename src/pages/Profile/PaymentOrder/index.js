@@ -51,7 +51,7 @@ function PaymentOrder() {
             };
 
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoice', {
+                const response = await fetch('http://buitoan.somee.com/api/Invoice/GetList_SearchInvoice', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(requestData),
@@ -90,7 +90,7 @@ function PaymentOrder() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
+            const response = await fetch('http://buitoan.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -147,7 +147,7 @@ function PaymentOrder() {
                 const requestData = {
                     invoiceID: invoiceID,
                 };
-                response = await fetch('https://buitoan.somee.com/api/Invoice/ConfirmCodPaymentSuccess', {
+                response = await fetch('http://buitoan.somee.com/api/Invoice/ConfirmCodPaymentSuccess', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(requestData),
@@ -157,7 +157,7 @@ function PaymentOrder() {
                     invoiceID: invoiceID,
                     status: 'Đã Nhận Hàng',
                 };
-                response = await fetch('https://buitoan.somee.com/api/Invoice/UpdateOrderStatus', {
+                response = await fetch('http://buitoan.somee.com/api/Invoice/UpdateOrderStatus', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(requestData),
@@ -226,7 +226,7 @@ function PaymentOrder() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Comment/Insert_Comment', {
+            const response = await fetch('http://buitoan.somee.com/api/Comment/Insert_Comment', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),

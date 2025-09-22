@@ -68,7 +68,7 @@ function ChangePasswordForm() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Users/ChangePassword', {
+            const response = await fetch('http://buitoan.somee.com/api/Users/ChangePassword', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(data),

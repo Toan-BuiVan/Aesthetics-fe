@@ -4,11 +4,11 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styles from './ItemProduct.module.scss';
 
 function ItemProduct({ product, onSuccess, onClick }) {
-    const imageBaseUrl = 'http://localhost:5262/FilesImages/Products';
+    const imageBaseUrl = 'http://buitoan.somee.com//wwwroot/Images';
     const imageUrl = `${imageBaseUrl}/${product.productImages}`;
 
     const handleAddToCart = async (e) => {
-        e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+        e.stopPropagation();
         const deviceName = localStorage.getItem('deviceName') || '';
         const refreshToken = localStorage.getItem('refreshToken') || '';
         const token = localStorage.getItem('token') || '';
@@ -34,7 +34,7 @@ function ItemProduct({ product, onSuccess, onClick }) {
             UserID: userID,
         };
 
-        const apiUrl = 'http://localhost:5262/api/CartProduct/Insert_CartProduct';
+        const apiUrl = 'http://buitoan.somee.com/api/CartProduct/Insert_CartProduct';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',

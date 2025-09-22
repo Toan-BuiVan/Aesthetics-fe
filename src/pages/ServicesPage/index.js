@@ -68,7 +68,7 @@ function ServicesPage() {
                 const productsOfServicesNameToSend =
                     debouncedSelectedTypes.length > 0 ? debouncedSelectedTypes.join(',') : null;
 
-                const response = await axios.post('https://buitoan.somee.com/api/Servicess/GetSortedPagedServicess', {
+                const response = await axios.post('http://buitoan.somee.com/api/Servicess/GetSortedPagedServicess', {
                     pageIndex: currentPage,
                     pageSize: 10,
                     minPrice: minPriceToSend,
@@ -133,7 +133,7 @@ function ServicesPage() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/Insert_Booking', {
+            const response = await fetch('http://buitoan.somee.com/api/Bookings/Insert_Booking', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify({

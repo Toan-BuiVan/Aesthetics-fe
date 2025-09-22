@@ -13,7 +13,7 @@ function ItemMenuType({ onSelectType, selectedType }) {
                 const requestBody = {};
 
                 const response = await fetch(
-                    'https://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
+                    'http://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
                     {
                         method: 'POST',
                         headers: {

@@ -63,7 +63,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
             UserID: userID,
         };
 
-        const apiUrl = 'https://buitoan.somee.com/api/CartProduct/Insert_CartProduct';
+        const apiUrl = 'http://buitoan.somee.com/api/CartProduct/Insert_CartProduct';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -110,7 +110,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
             UserID: userID,
         };
 
-        const apiUrl = 'https://buitoan.somee.com/api/Invoice/Insert_Invoice';
+        const apiUrl = 'http://buitoan.somee.com/api/Invoice/Insert_Invoice';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -140,7 +140,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Comment/GetList_SearchComment', {
+                const response = await fetch('http://buitoan.somee.com/api/Comment/GetList_SearchComment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
     useEffect(() => {
         const fetchRelatedProducts = async () => {
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Products/GetList_SearchProducts', {
+                const response = await fetch('http://buitoan.somee.com/api/Products/GetList_SearchProducts', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
                 </button>
                 <div className={cx('product-image')}>
                     <img
-                        src={`https://buitoan.somee.com/wwwroot/Images/${product.productImages}`}
+                        src={`http://buitoan.somee.com/wwwroot/Images/${product.productImages}`}
                         alt={product.productName}
                     />
                 </div>
@@ -279,7 +279,7 @@ function ProductDetailsPage({ product, onBack, onSelectProduct }) {
                         {relatedProducts.map((relatedProduct) => (
                             <div key={relatedProduct.productID} className={cx('related-product-item')}>
                                 <img
-                                    src={`https://buitoan.somee.com/wwwroot/Images/${relatedProduct.productImages}`}
+                                    src={`http://buitoan.somee.com/wwwroot/Images/${relatedProduct.productImages}`}
                                     alt={relatedProduct.productName}
                                     className={cx('related-product-image')}
                                 />
