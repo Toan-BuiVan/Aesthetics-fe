@@ -23,7 +23,7 @@ function Header() {
     const [isContactVisible, setIsContactVisible] = useState(false);
     const [isLoginVisible, setIsLoginVisible] = useState(false);
     const [successMessage, setSuccessMessage] = useState(null);
-    const [isMenuVisible, setIsMenuVisible] = useState(false); // State để hiển thị menu
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const debounce = useDebounce(searchValue, 500);
     const contactRef = useRef(null);
 
@@ -48,18 +48,6 @@ function Header() {
                 accessToken: token,
             });
 
-            if (response.data.responseCode === 1) {
-                setSuccessMessage(response.data.resposeMessage);
-                setTimeout(() => {
-                    setSuccessMessage(null);
-                }, 2000);
-            } else {
-                setSuccessMessage('Đăng xuất không thành công:');
-                setTimeout(() => {
-                    setSuccessMessage(null);
-                }, 2000);
-            }
-
             // Xóa các giá trị cụ thể khỏi local storage
             localStorage.removeItem('deviceName');
             localStorage.removeItem('refreshToken');
@@ -67,6 +55,18 @@ function Header() {
             localStorage.removeItem('typePerson');
             localStorage.removeItem('userID');
             localStorage.removeItem('userName');
+            if (response.data.responseCode === 1) {
+                setSuccessMessage(response.data.resposeMessage);
+                setTimeout(() => {
+                    setSuccessMessage(null);
+                }, 2000);
+            } else {
+                setSuccessMessage('Đăng xuất không thành công:');
+
+                setTimeout(() => {
+                    setSuccessMessage(null);
+                }, 2000);
+            }
 
             localStorage.clear();
             setIsMenuVisible(false);
