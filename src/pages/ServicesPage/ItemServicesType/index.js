@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function ItemServicesType({ onSelectTypes }) {
     const [items, setItems] = useState([]);
-    const [selectedType, setSelectedType] = useState(null); // Thay đổi từ mảng sang chuỗi hoặc null
+    const [selectedType, setSelectedType] = useState(null); 
 
     useEffect(() => {
         const fetchData = async () => {
