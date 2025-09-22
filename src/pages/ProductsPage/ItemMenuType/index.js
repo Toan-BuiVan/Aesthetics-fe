@@ -13,7 +13,7 @@ function ItemMenuType({ onSelectType, selectedType }) {
                 const requestBody = {};
 
                 const response = await fetch(
-                    'http://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
+                    'https://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
                     {
                         method: 'POST',
                         headers: {
@@ -24,7 +24,7 @@ function ItemMenuType({ onSelectType, selectedType }) {
                 );
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`https error! status: ${response.status}`);
                 }
 
                 const responseData = await response.json();

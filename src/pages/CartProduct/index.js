@@ -35,7 +35,7 @@ function CartProduct() {
             };
 
             try {
-                const response = await fetch('http://buitoan.somee.com/api/Wallets/GetList_SearchWallets', {
+                const response = await fetch('https://buitoan.somee.com/api/Wallets/GetList_SearchWallets', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify({ userID: userID }),
@@ -155,7 +155,7 @@ function CartProduct() {
         }
 
         try {
-            const response = await fetch('http://buitoan.somee.com/api/Invoice/Insert_Invoice', {
+            const response = await fetch('https://buitoan.somee.com/api/Invoice/Insert_Invoice', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(body),
@@ -223,7 +223,7 @@ function CartProduct() {
                                 {invoiceItems.map((item, index) => (
                                     <div key={index} className={cx('invoice-item')}>
                                         <img
-                                            src={`http://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
+                                            src={`https://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
                                             alt={item.productName}
                                             className={cx('invoice-item-image')}
                                         />
@@ -275,7 +275,7 @@ function CartProduct() {
                                             />
                                             <div className={cx('voucher-content')}>
                                                 <img
-                                                    src={`http://buitoan.somee.com/wwwroot/Images/${voucher.voucherImage}`}
+                                                    src={`https://buitoan.somee.com/wwwroot/Images/${voucher.voucherImage}`}
                                                     alt={voucher.code}
                                                     className={cx('voucher-image')}
                                                 />

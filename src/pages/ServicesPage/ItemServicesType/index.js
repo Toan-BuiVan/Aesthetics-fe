@@ -15,7 +15,7 @@ function ItemServicesType({ onSelectTypes }) {
                 const requestBody = {};
 
                 const response = await fetch(
-                    'http://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
+                    'https://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
                     {
                         method: 'POST',
                         headers: {
@@ -26,7 +26,7 @@ function ItemServicesType({ onSelectTypes }) {
                 );
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`https error! status: ${response.status}`);
                 }
 
                 const responseData = await response.json();

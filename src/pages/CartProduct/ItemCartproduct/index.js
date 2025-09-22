@@ -24,7 +24,7 @@ function CartItem({ item, onQuantityChange, onDelete, onAddToInvoice }) {
     return (
         <div className={cx('cart-item')}>
             <img
-                src={`http://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
+                src={`https://buitoan.somee.com/wwwroot/Images/${item.productImages}`}
                 alt={item.productName}
                 className={cx('item-image')}
             />
@@ -81,7 +81,7 @@ function ItemCartproduct({ onAddToInvoice, onCheckoutAll }) {
             const requestData = { userID };
 
             try {
-                const response = await fetch('http://buitoan.somee.com/api/CartProduct/GetList_SearchCartProduct', {
+                const response = await fetch('https://buitoan.somee.com/api/CartProduct/GetList_SearchCartProduct', {
                     method: 'POST',
                     headers,
                     body: JSON.stringify(requestData),
@@ -125,7 +125,7 @@ function ItemCartproduct({ onAddToInvoice, onCheckoutAll }) {
         };
 
         try {
-            const response = await fetch('http://buitoan.somee.com/api/CartProduct/Delete_CartProduct', {
+            const response = await fetch('https://buitoan.somee.com/api/CartProduct/Delete_CartProduct', {
                 method: 'DELETE',
                 headers,
                 body: JSON.stringify(requestData),
@@ -160,7 +160,7 @@ function ItemCartproduct({ onAddToInvoice, onCheckoutAll }) {
         };
 
         try {
-            const response = await fetch('http://buitoan.somee.com/api/CartProduct/Update_CartProduct', {
+            const response = await fetch('https://buitoan.somee.com/api/CartProduct/Update_CartProduct', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(requestData),
