@@ -56,7 +56,7 @@ function Login({ onClose, setSuccessMessage }) {
         const password = document.getElementById('log-pass').value;
 
         try {
-            const response = await axios.post('http://buitoan.somee.com/api/Authentication/Login_Account', {
+            const response = await axios.post('https://buitoan.somee.com/api/Authentication/Login_Account', {
                 userName,
                 password,
             });
