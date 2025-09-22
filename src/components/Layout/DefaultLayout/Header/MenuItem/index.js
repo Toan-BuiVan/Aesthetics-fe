@@ -37,7 +37,7 @@ function MenuItem() {
     useEffect(() => {
         const fetchAllServices = async () => {
             try {
-                const response = await axios.post('http://localhost:5262/api/Servicess/GetList_SearchServicess', {
+                const response = await axios.post('http://buitoan.somee.com/api/Servicess/GetList_SearchServicess', {
                     serviceID: null,
                     serviceName: null,
                     productsOfServicesID: null,

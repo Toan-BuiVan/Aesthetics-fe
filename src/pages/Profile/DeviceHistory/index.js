@@ -35,7 +35,7 @@ function DeviceHistory() {
         };
 
         try {
-            const response = await fetch('http://localhost:5262/api/UserSession/GetList_SearchUserSession', {
+            const response = await fetch('http://buitoan.somee.com/api/UserSession/GetList_SearchUserSession', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),

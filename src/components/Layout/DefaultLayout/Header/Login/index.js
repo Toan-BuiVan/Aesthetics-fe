@@ -56,7 +56,7 @@ function Login({ onClose, setSuccessMessage }) {
         const password = document.getElementById('log-pass').value;
 
         try {
-            const response = await axios.post('http://localhost:5262/api/Authentication/Login_Account', {
+            const response = await axios.post('http://buitoan.somee.com/api/Authentication/Login_Account', {
                 userName,
                 password,
             });
@@ -109,7 +109,7 @@ function Login({ onClose, setSuccessMessage }) {
         }
 
         try {
-            const response = await axios.post('http://localhost:5262/api/Users/Create_Account', {
+            const response = await axios.post('http://buitoan.somee.com/api/Users/Create_Account', {
                 userName,
                 passWord,
                 referralCode,
@@ -135,7 +135,7 @@ function Login({ onClose, setSuccessMessage }) {
 
     const handleGoogleLogin = () => {
         const popup = window.open(
-            'http://localhost:5262/api/Authentication/login-google',
+            'http://buitoan.somee.com/api/Authentication/login-google',
             'googleLogin',
             'width=600,height=600',
         );
@@ -148,7 +148,7 @@ function Login({ onClose, setSuccessMessage }) {
         const handleMessage = (event) => {
             console.log('Received message from:', event.origin);
             console.log('Data:', event.data);
-            if (event.origin === 'http://localhost:5262') {
+            if (event.origin === 'http://buitoan.somee.com') {
                 const data = event.data;
                 localStorage.setItem('token', data.Token);
                 localStorage.setItem('refreshToken', data.RefreshToken);

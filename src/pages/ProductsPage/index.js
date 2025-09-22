@@ -60,7 +60,7 @@ function ProductsPage() {
                 const supplierNameToSend = debouncedSelectedSupplier || null;
                 const productsOfServicesNameToSend = debouncedSelectedType || null;
 
-                const response = await axios.post('http://localhost:5262/api/Products/GetSortedPagedProducts', {
+                const response = await axios.post('http://buitoan.somee.com/api/Products/GetSortedPagedProducts', {
                     pageIndex: currentPage,
                     pageSize: pageSize,
                     minPrice: minPriceToSend,

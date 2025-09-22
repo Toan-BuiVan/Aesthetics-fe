@@ -45,7 +45,7 @@ function AccountForm() {
 
             try {
                 const response = await axios.post(
-                    'http://localhost:5262/api/Users/GetList_SearchUser',
+                    'http://buitoan.somee.com/api/Users/GetList_SearchUser',
                     { userID: parseInt(userID) },
                     { headers },
                 );
@@ -103,7 +103,7 @@ function AccountForm() {
         };
 
         try {
-            const response = await fetch('http://localhost:5262/api/Users/Update_User', {
+            const response = await fetch('http://buitoan.somee.com/api/Users/Update_User', {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(data),

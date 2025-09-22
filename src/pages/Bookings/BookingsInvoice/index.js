@@ -27,7 +27,7 @@ function BookingsInvoice({ invoiceItems, setInvoiceItems, setParentSuccessMessag
             };
 
             try {
-                const response = await fetch('http://localhost:5262/api/Wallets/GetList_SearchWallets', {
+                const response = await fetch('http://buitoan.somee.com/api/Wallets/GetList_SearchWallets', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify({ userID: userID }),
@@ -105,7 +105,7 @@ function BookingsInvoice({ invoiceItems, setInvoiceItems, setParentSuccessMessag
         };
 
         try {
-            const response = await fetch('http://localhost:5262/api/Invoice/Insert_Invoice', {
+            const response = await fetch('http://buitoan.somee.com/api/Invoice/Insert_Invoice', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(body),
@@ -172,7 +172,7 @@ function BookingsInvoice({ invoiceItems, setInvoiceItems, setParentSuccessMessag
         };
 
         try {
-            const response = await fetch('http://localhost:5262/api/Invoice/Insert_Invoice', {
+            const response = await fetch('http://buitoan.somee.com/api/Invoice/Insert_Invoice', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(body),
@@ -283,7 +283,7 @@ function BookingsInvoice({ invoiceItems, setInvoiceItems, setParentSuccessMessag
                                     />
                                     <div className={cx('voucher-content')}>
                                         <img
-                                            src={`http://localhost:5262/FilesImages/Vouchers/${voucher.voucherImage}`}
+                                            src={`http://buitoan.somee.com/wwwroot/Images/${voucher.voucherImage}`}
                                             alt={voucher.code}
                                             className={cx('voucher-image')}
                                         />

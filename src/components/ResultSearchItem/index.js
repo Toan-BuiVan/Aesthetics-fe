@@ -10,10 +10,10 @@ function ResultSearchItem({ data }) {
                 className={cx('result-image')}
                 src={
                     data.productImages
-                        ? `http://localhost:5262/FilesImages/Products/${data.productImages}`
+                        ? `http://buitoan.somee.com/wwwroot/Images/${data.productImages}`
                         : data.serviceImage
-                        ? `http://localhost:5262/FilesImages/Servicess/${data.serviceImage}`
-                        : 'http://localhost:5262/FilesImages/default.jpg'
+                        ? `http://buitoan.somee.com/wwwroot/Images/${data.serviceImage}`
+                        : 'http://buitoan.somee.com/FilesImages/default.jpg'
                 }
                 alt=""
             />
