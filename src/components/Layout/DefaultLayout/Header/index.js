@@ -3,6 +3,7 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useMediaQuery } from 'react-responsive';
 import { faMagnifyingGlass, faUser, faCartShopping, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 import MenuItem from './MenuItem';
@@ -26,6 +27,8 @@ function Header() {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const debounce = useDebounce(searchValue, 500);
     const contactRef = useRef(null);
+
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
     // Hàm kiểm tra trạng thái đăng nhập
     const isLoggedIn = () => {
@@ -148,7 +151,7 @@ function Header() {
             setSearchResult([]);
             return;
         }
-        console.log('Debounce value:', debounce);
+
 
         async function search() {
             try {
@@ -227,9 +230,12 @@ function Header() {
                             appendTo={document.body}
                             interactive={true}
                             visible={searchResult.length > 0}
-                            placement="bottom"
+                            placement={isMobile ? 'bottom' : 'bottom-start'}
+                            delay={[0, 100]}
+                            maxWidth="80%"
                             render={(attrs) => (
-                                <div className={cx('')} tabIndex="-1" {...attrs}>
+                                <div className={cx('search-results')} tabIndex="-1" {...attrs}>
+                                    {' '}
                                     <PopperWrapper>
                                         <h4 className={cx('search-title')}>Kết Quả Tìm Kiếm...</h4>
                                         {searchResult.map((result, index) => (
