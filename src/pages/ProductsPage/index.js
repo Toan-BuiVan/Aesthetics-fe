@@ -173,7 +173,7 @@ function ProductsPage() {
                                     </div>
                                 ))
                             ) : (
-                                <p>Đang Loading...</p>
+                                <p>Loading...</p>
                             )}
                         </div>
                         <div className={styles.pagination}>
