@@ -128,26 +128,41 @@ function ProductsPage() {
             ) : (
                 <>
                     <div className={styles.sidebar}>
-                        <h2 className={styles.khoangGia}>Khoảng Giá</h2>
-                        <ul>
-                            {priceRanges.map((range) => (
-                                <li key={range.id} className={styles.menuItem}>
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            className={styles.checkbox}
-                                            checked={selectedPriceRanges.includes(range.id)}
-                                            onChange={() => handlePriceRangeChange(range.id)}
-                                        />
-                                        <span className={styles.text}>{range.label}</span>
-                                    </label>
-                                </li>
-                            ))}
-                        </ul>
-                        <h2 className={styles.khoangGia}>Loại Sản Phẩm</h2>
-                        <ItemMenuType onSelectType={setSelectedType} selectedType={selectedType} />
-                        <h2 className={styles.khoangGia}>Nhà Cung Cấp</h2>
-                        <ItemMenuSupplier onSelectSupplier={setSelectedSupplier} selectedSupplier={selectedSupplier} />
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Khoảng Giá</h2>
+                            <div className={styles.scrollableList}>
+                                <ul className={styles.menuList}>
+                                    {priceRanges.map((range) => (
+                                        <li key={range.id} className={styles.menuItem}>
+                                            <label className={styles.label}>
+                                                <input
+                                                    type="checkbox"
+                                                    className={styles.checkbox}
+                                                    checked={selectedPriceRanges.includes(range.id)}
+                                                    onChange={() => handlePriceRangeChange(range.id)}
+                                                />
+                                                <span className={styles.text}>{range.label}</span>
+                                            </label>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Loại Sản Phẩm</h2>
+                            <div className={styles.scrollableList}>
+                                <ItemMenuType onSelectType={setSelectedType} selectedType={selectedType} />
+                            </div>
+                        </div>
+                        <div className={styles.section}>
+                            <h2 className={styles.sectionTitle}>Nhà Cung Cấp</h2>
+                            <div className={styles.scrollableList}>
+                                <ItemMenuSupplier
+                                    onSelectSupplier={setSelectedSupplier}
+                                    selectedSupplier={selectedSupplier}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.contentProducts}>
                         <div className={styles.content}>
