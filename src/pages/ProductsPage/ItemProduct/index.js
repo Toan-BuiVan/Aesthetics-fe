@@ -4,7 +4,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styles from './ItemProduct.module.scss';
 
 function ItemProduct({ product, onSuccess, onClick }) {
-    const imageBaseUrl = 'https://buitoan.somee.com/Images';
+    const imageBaseUrl = 'https://buitoandev.somee.com/Images';
     const imageUrl = `${imageBaseUrl}/${product.productImages}`;
 
     const handleAddToCart = async (e) => {
@@ -34,7 +34,7 @@ function ItemProduct({ product, onSuccess, onClick }) {
             UserID: userID,
         };
 
-        const apiUrl = 'https://buitoan.somee.com/api/CartProduct/Insert_CartProduct';
+        const apiUrl = 'https://buitoandev.somee.com/api/CartProduct/Insert_CartProduct';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',

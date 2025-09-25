@@ -1,3 +1,4 @@
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
@@ -13,8 +14,7 @@ function MenuItem() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-    const menuItems = [
+    const [menuItems, setMenuItems] = useState([
         { name: 'Trang Chủ', id: null, href: '/' },
         {
             name: 'Giới Thiệu',
@@ -27,34 +27,78 @@ function MenuItem() {
                 { name: 'Đánh Giá', href: '#section-nhan-xet' },
             ],
         },
-        { name: 'Da Liễu', id: 3, href: '/servicesPage' },
-        { name: 'Nha Khoa', id: 7, href: '/servicesPage' },
-        { name: 'Phẫu Thuật Phẩm Mỹ', id: 1, href: '/servicesPage' },
-        { name: 'Bảng Giá', id: null, href: '/servicesPage' },
-        { name: 'Sản Phẩm', id: null, href: '/productsPage' },
-    ];
+        // Các mục động từ API sẽ được thêm vào đây
+        { name: 'Bảng Giá', id: null, href: '/servicesPage' }, // Giữ cố định nếu không từ API
+        { name: 'Sản Phẩm', id: null, href: '/productsPage' }, // Giữ cố định nếu không từ API
+    ]);
 
     useEffect(() => {
         const fetchAllServices = async () => {
             try {
-                const response = await axios.post('https://buitoan.somee.com/api/Servicess/GetList_SearchServicess', {
-                    serviceID: null,
-                    serviceName: null,
-                    productsOfServicesID: null,
-                });
-                const allServices = response.data;
+                // Gọi API để lấy danh sách loại dịch vụ động (Servicess)
+                const headers = { 'Content-Type': 'application/json' }; // Thêm headers nếu cần token, v.v.
+                const servicesTypeResponse = await axios.post(
+                    'https://buitoandev.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
+                    {
+                        productsOfServicesID: null,
+                        productsOfServicesName: null,
+                        productsOfServicesType: 'Servicess',
+                    },
+                    { headers },
+                );
+                let dynamicTypesData = servicesTypeResponse.data;
+                let dynamicTypes = [];
+                if (Array.isArray(dynamicTypesData)) {
+                    dynamicTypes = dynamicTypesData;
+                } else if (dynamicTypesData && Array.isArray(dynamicTypesData.data)) {
+                    dynamicTypes = dynamicTypesData.data;
+                }
 
-                // Tạo servicesById từ allServices
-                const servicesById = {};
-                menuItems.forEach((item) => {
+                // Tạo menuItems động từ API
+                const dynamicMenuItems = dynamicTypes.map((type) => ({
+                    name: type.productsOfServicesName || 'Không tên',
+                    id: type.productsOfServicesID,
+                    href: '/servicesPage',
+                }));
+
+                // Cập nhật menuItems: Trang Chủ + Giới Thiệu + động + Bảng Giá + Sản Phẩm
+                const fixedItemsAfter = menuItems.slice(2);
+                const newMenuItems = [
+                    ...menuItems.slice(0, 2), // Giữ Trang Chủ và Giới Thiệu
+                    ...dynamicMenuItems, // Thêm động
+                    ...fixedItemsAfter, // Thêm Bảng Giá và Sản Phẩm ở cuối
+                ];
+                setMenuItems(newMenuItems);
+
+                // Tiếp tục lấy allServices như cũ
+                const allServicesResponse = await axios.post(
+                    'https://buitoandev.somee.com/api/Servicess/GetList_SearchServicess',
+                    {
+                        serviceID: null,
+                        serviceName: null,
+                        productsOfServicesID: null,
+                    },
+                );
+                let allServicesData = allServicesResponse.data;
+                let allServices = [];
+                if (Array.isArray(allServicesData)) {
+                    allServices = allServicesData;
+                } else if (allServicesData && Array.isArray(allServicesData.data)) {
+                    allServices = allServicesData.data;
+                }
+
+                // Tạo servicesById từ allServices (dùng cho sub-items)
+                const servicesByIdTemp = {};
+                [...dynamicMenuItems, ...fixedItemsAfter].forEach((item) => {
+                    // Bao gồm cả động và cố định
                     if (item.id !== null) {
-                        servicesById[item.id] = allServices.filter(
+                        servicesByIdTemp[item.id] = allServices.filter(
                             (service) => service.productsOfServicesID === item.id,
                         );
                     }
                 });
 
-                setServicesById(servicesById);
+                setServicesById(servicesByIdTemp);
                 setLoading(false);
             } catch (err) {
                 setError('Không thể tải dịch vụ');
@@ -72,7 +116,7 @@ function MenuItem() {
         window.location.href = href;
     };
 
-    const specificServiceIds = [1, 3, 4, 5, 6, 7, 8];
+    const specificServiceIds = [1, 3, 4, 5, 6, 7, 8]; // Giữ nguyên, nhưng có thể điều chỉnh nếu id từ API khác
 
     const renderServices = (item) => {
         const isSpecificService = specificServiceIds.includes(item.id) || item.name === 'Sản Phẩm';

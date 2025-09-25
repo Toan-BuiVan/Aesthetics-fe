@@ -86,7 +86,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
             UserID: userID,
         };
 
-        const apiUrl = 'https://buitoan.somee.com/api/CartProduct/Insert_CartProduct';
+        const apiUrl = 'https://buitoandev.somee.com/api/CartProduct/Insert_CartProduct';
 
         try {
             const response = await fetch(apiUrl, {
@@ -153,7 +153,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/Insert_Booking', {
+            const response = await fetch('https://buitoandev.somee.com/api/Bookings/Insert_Booking', {
                 method: 'POST',
 
                 headers: headers,
@@ -241,7 +241,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
 
             const payload = { searchText: content, userId: parseInt(localUserId) || null };
 
-            const response = await axios.post('https://buitoan.somee.com/api/ChatBox/ChatBox', payload);
+            const response = await axios.post('https://buitoandev.somee.com/api/ChatBox/ChatBox', payload);
 
             const apiData = response.data;
 
@@ -299,7 +299,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
 
     const renderMessageText = (text) => {
         const parsedText = text.replace(/Hình ảnh: ([^\s,]+(?:\.(png|jpg|jpeg|gif))?)/g, (match, filename) => {
-            const imgPath = `https://buitoan.somee.com/Images/${filename}`;
+            const imgPath = `https://buitoandev.somee.com/Images/${filename}`;
 
             return `<img src="${imgPath}" alt="Product Image" style="max-width: 50%; border-radius: 8px; margin-top: 8px;" />`;
         });
@@ -350,7 +350,7 @@ const ContactInfo = forwardRef(({ onClose, setSuccessMessage }, ref) => {
 
                                 {msg.data.productImages && (
                                     <img
-                                        src={`https://buitoan.somee.com/Images/${msg.data.productImages}`}
+                                        src={`https://buitoandev.somee.com/Images/${msg.data.productImages}`}
                                         alt="Product Image"
                                         style={{ maxWidth: '50%', borderRadius: '8px', marginTop: '8px' }}
                                     />

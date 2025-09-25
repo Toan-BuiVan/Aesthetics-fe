@@ -11,7 +11,7 @@ function ItemMenuSupplier({ onSelectSupplier, selectedSupplier }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post('https://buitoan.somee.com/api/Supplier/GetList_SearchSupplier', {});
+                const response = await axios.post('https://buitoandev.somee.com/api/Supplier/GetList_SearchSupplier', {});
                 if (response.data && response.data.data && Array.isArray(response.data.data)) {
                     setSuppliers(response.data.data);
                 } else if (Array.isArray(response.data)) {

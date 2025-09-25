@@ -15,7 +15,7 @@ function ItemServicesType({ onSelectTypes }) {
                 const requestBody = {};
 
                 const response = await fetch(
-                    'https://buitoan.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
+                    'https://buitoandev.somee.com/api/TypeProductsServices/GetList_SreachProductsOfServices',
                     {
                         method: 'POST',
                         headers: {

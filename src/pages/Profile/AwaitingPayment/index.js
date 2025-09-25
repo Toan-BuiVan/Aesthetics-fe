@@ -46,7 +46,7 @@ function AwaitingPayment({ onCountChange }) {
             };
 
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoice', {
+                const response = await fetch('https://buitoandev.somee.com/api/Invoice/GetList_SearchInvoice', {
                     method: 'POST',
                     headers: headers,
                     body: JSON.stringify(requestData),
@@ -87,7 +87,7 @@ function AwaitingPayment({ onCountChange }) {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
+            const response = await fetch('https://buitoandev.somee.com/api/Invoice/GetList_SearchInvoiceDetail', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -134,7 +134,7 @@ function AwaitingPayment({ onCountChange }) {
 
         switch (method) {
             case 'Momo':
-                apiUrl = 'https://buitoan.somee.com/api/Payment/CreatePaymentUrl';
+                apiUrl = 'https://buitoandev.somee.com/api/Payment/CreatePaymentUrl';
                 requestData = {
                     orderId: String(invoice.invoiceID),
                     amount: String(invoice.totalAmountAfterDiscount),
@@ -143,7 +143,7 @@ function AwaitingPayment({ onCountChange }) {
                 };
                 break;
             case 'BankTransfer':
-                apiUrl = 'https://buitoan.somee.com/api/Payment/CreatePaymentUrlVnPay';
+                apiUrl = 'https://buitoandev.somee.com/api/Payment/CreatePaymentUrlVnPay';
                 requestData = {
                     OrderID: String(invoice.invoiceID),
                     amount: invoice.totalAmountAfterDiscount,
@@ -152,7 +152,7 @@ function AwaitingPayment({ onCountChange }) {
                 };
                 break;
             case 'COD':
-                apiUrl = 'https://buitoan.somee.com/api/Invoice/ProcessDirectPayment';
+                apiUrl = 'https://buitoandev.somee.com/api/Invoice/ProcessDirectPayment';
                 requestData = { invoiceID: invoice.invoiceID };
                 break;
             default:

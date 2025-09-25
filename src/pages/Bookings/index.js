@@ -38,7 +38,7 @@ function Bookings() {
             };
 
             const response = await axios.post(
-                'https://buitoan.somee.com/api/Bookings/GetList_SearchBooking',
+                'https://buitoandev.somee.com/api/Bookings/GetList_SearchBooking',
                 { userID: userID },
                 { headers },
             );
@@ -49,7 +49,7 @@ function Bookings() {
             const initialQuantities = {};
             for (const booking of allBookings) {
                 const detailsResponse = await axios.post(
-                    'https://buitoan.somee.com/api/Bookings/GetList_SearchBooking_Assignment',
+                    'https://buitoandev.somee.com/api/Bookings/GetList_SearchBooking_Assignment',
                     { bookingID: booking.bookingID },
                     { headers },
                 );
@@ -96,7 +96,7 @@ function Bookings() {
                 endDate: endDate.toISOString(),
             };
 
-            const response = await axios.post('https://buitoan.somee.com/api/Bookings/GetList_SearchBooking', requestData, {
+            const response = await axios.post('https://buitoandev.somee.com/api/Bookings/GetList_SearchBooking', requestData, {
                 headers,
             });
             const filteredBookings = response.data.data || [];
@@ -128,7 +128,7 @@ function Bookings() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/UpdateQuantity', {
+            const response = await fetch('https://buitoandev.somee.com/api/Bookings/UpdateQuantity', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -214,7 +214,7 @@ function Bookings() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/Delete_Booking', {
+            const response = await fetch('https://buitoandev.somee.com/api/Bookings/Delete_Booking', {
                 method: 'DELETE',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -268,7 +268,7 @@ function Bookings() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/Delete_BookingSer_Assi', {
+            const response = await fetch('https://buitoandev.somee.com/api/Bookings/Delete_BookingSer_Assi', {
                 method: 'DELETE',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -333,7 +333,7 @@ function Bookings() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Servicess/GetList_SearchServicess', {
+            const response = await fetch('https://buitoandev.somee.com/api/Servicess/GetList_SearchServicess', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -393,7 +393,7 @@ function Bookings() {
         };
 
         try {
-            const response = await fetch('https://buitoan.somee.com/api/Bookings/Insert_BookingSer_Assi', {
+            const response = await fetch('https://buitoandev.somee.com/api/Bookings/Insert_BookingSer_Assi', {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(requestData),
@@ -409,7 +409,7 @@ function Bookings() {
                 throw new Error(data.resposeMessage || 'Lỗi khi thêm dịch vụ');
             }
             const detailsResponse = await axios.post(
-                'https://buitoan.somee.com/api/Bookings/GetList_SearchBooking_Assignment',
+                'https://buitoandev.somee.com/api/Bookings/GetList_SearchBooking_Assignment',
                 { bookingID: selectedBookingId },
                 { headers },
             );

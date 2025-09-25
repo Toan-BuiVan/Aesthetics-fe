@@ -47,7 +47,7 @@ function Header() {
             const token = localStorage.getItem('token');
 
             // Gửi yêu cầu POST với payload { accessToken: token }
-            const response = await axios.post('https://buitoan.somee.com/api/Authentication/LogOut_Account', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Authentication/LogOut_Account', {
                 accessToken: token,
             });
 
@@ -86,7 +86,7 @@ function Header() {
                 throw new Error('Không tìm thấy accessToken');
             }
 
-            const response = await axios.post('https://buitoan.somee.com/api/Authentication/LogOutAll_Account', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Authentication/LogOutAll_Account', {
                 accessToken,
             });
 
@@ -119,7 +119,7 @@ function Header() {
 
     const fetchProducts = async (productName) => {
         try {
-            const response = await axios.post('https://buitoan.somee.com/api/Products/GetList_SearchProducts', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Products/GetList_SearchProducts', {
                 productID: null,
                 productName: productName,
                 productsOfServicesName: null,
@@ -134,7 +134,7 @@ function Header() {
 
     const fetchServices = async (serviceName) => {
         try {
-            const response = await axios.post('https://buitoan.somee.com/api/Servicess/GetList_SearchServicess', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Servicess/GetList_SearchServicess', {
                 serviceID: null,
                 serviceName: serviceName,
                 productsOfServicesID: null,

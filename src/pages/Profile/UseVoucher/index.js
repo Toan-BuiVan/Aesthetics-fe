@@ -35,7 +35,7 @@ function UseVoucher() {
                 userID: parseInt(userID),
             };
             try {
-                const response = await fetch('https://buitoan.somee.com/api/Wallets/GetList_SearchWallets', {
+                const response = await fetch('https://buitoandev.somee.com/api/Wallets/GetList_SearchWallets', {
                     method: 'POST',
                     headers,
                     body: JSON.stringify(data),
@@ -96,7 +96,7 @@ function UseVoucher() {
                         <div key={voucher.voucherID} className={cx('voucher-card')}>
                             <div className={cx('voucher-card-header')}>
                                 <img
-                                    src={`https://buitoan.somee.com/Images/${voucher.voucherImage}`}
+                                    src={`https://buitoandev.somee.com/Images/${voucher.voucherImage}`}
                                     alt={voucher.code}
                                     className={cx('voucher-logo')}
                                 />

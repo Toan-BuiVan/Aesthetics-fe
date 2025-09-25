@@ -56,7 +56,7 @@ function Login({ onClose, setSuccessMessage }) {
         const password = document.getElementById('log-pass').value;
 
         try {
-            const response = await axios.post('https://buitoan.somee.com/api/Authentication/Login_Account', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Authentication/Login_Account', {
                 userName,
                 password,
             });
@@ -112,7 +112,7 @@ function Login({ onClose, setSuccessMessage }) {
         }
 
         try {
-            const response = await axios.post('https://buitoan.somee.com/api/Users/Create_Account', {
+            const response = await axios.post('https://buitoandev.somee.com/api/Users/Create_Account', {
                 userName,
                 passWord,
                 referralCode,
